@@ -12,6 +12,7 @@ class venda extends Model
 
     protected $fillable = [ 'id', 
                             'cliente_id',
-                            'vendedo_id'];
+                            'vendedor_id',
+                            'data_da_venda'];
     protected $table = 'venda';
 }
