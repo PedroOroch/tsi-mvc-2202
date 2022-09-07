@@ -9,9 +9,14 @@ class Produtos extends Model
 {
     use HasFactory;
 
-    protected $fillable = [ 'id', 
+    protected $fillable = [ 'id',
                             'nome',
                             'descricao',
                             'preco'];
     protected $table = 'produtos';
+
+    public function produtoVendido()
+    {
+        return $this->hasOne(ProdutosVenda::class, 'produto_id');
+    }
 }

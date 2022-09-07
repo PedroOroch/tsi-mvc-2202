@@ -9,9 +9,13 @@ class NotasFiscais extends Model
 {
     use HasFactory;
 
-    protected $fillable = [ 'id', 
+    protected $fillable = [ 'id',
                             'venda_id',
                             'valor',
                             'imposto'];
     protected $table = 'notasFiscais';
+
+    public function venda() {
+        return $this->hasOne(venda::class, 'id');
+    }
 }

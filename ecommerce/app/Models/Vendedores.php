@@ -9,9 +9,13 @@ class Vendedores extends Model
 {
     use HasFactory;
 
-    protected $fillable = [ 'id', 
+    protected $fillable = [ 'id',
                             'matricula',
                             'nome'];
     protected $table = 'vendedor';
-    
+
+    public function vendas() {
+        return $this->hasMany(venda::class, 'vendedor_id');
+    }
+
 }
