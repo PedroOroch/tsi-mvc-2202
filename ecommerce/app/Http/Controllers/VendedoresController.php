@@ -3,13 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \App\Models\Vendedores;
 
-use \App\Models\Clientes;
-
-
-class ClientesController extends Controller
+class VendedoresController extends Controller
 {
-    //use Illuminate\Http\Request;
 
     private $qtdPorPagina = 5;
 
@@ -21,8 +18,11 @@ class ClientesController extends Controller
     public function index(Request $request)
     {
         //
-        $cli = Clientes::orderBy('id', 'ASC')->paginate($this->qtdPorPagina);
-        return view('clientes.index', compact('cli'))->with('i', ($request->input('page', 1)-1) * $this->qtdPorPagina);
+
+        $vend = Vendedores::orderBy('id', 'ASC')->paginate($this->qtdPorPagina);
+
+        return view('vendedores.index', compact('vend'))
+                ->with('i', ($request->input('page', 1) - 1) * $this->qtdPorPagina);
     }
 
     /**
@@ -32,8 +32,7 @@ class ClientesController extends Controller
      */
     public function create()
     {
-        //
-        return view('clientes.create');
+        return view('vendedores.create');
     }
 
     /**
@@ -45,12 +44,12 @@ class ClientesController extends Controller
     public function store(Request $request)
     {
         //
-        $this->validate($request, [ 'nome'      => 'required',
-                                    'email'     => 'required|email']);
+        $this->validate($request, [ 'nome'          => 'required',
+                                    'matricula'     => 'required']);
         $input      = $request->all();
-        $cliente    = Clientes::create($input);
+        $vendedor    = Vendedores::create($input);
 
-        return redirect()->route('clientes.index')->with('success', 'Cliente gravado com sucesso!');
+        return redirect()->route('vendedores.index')->with('success', 'Vendedor gravado com sucesso!');
     }
 
     /**
@@ -62,10 +61,9 @@ class ClientesController extends Controller
     public function show($id)
     {
         //
-        $cliente = Clientes::find($id);
+        $vendedor = Vendedores::find($id);
 
-        return view('clientes.show', compact('cliente'));
-
+        return view('vendedores.show', compact('vendedor'));
     }
 
     /**
@@ -77,10 +75,9 @@ class ClientesController extends Controller
     public function edit($id)
     {
         //
+        $vendedor = Vendedores::find($id);
 
-        $cliente = Clientes::find($id);
-
-        return view('clientes.edit', compact('cliente'));
+        return view('vendedores.edit', compact('vendedor'));
     }
 
     /**
@@ -94,16 +91,15 @@ class ClientesController extends Controller
     {
         //
         $this->validate($request, [ 'nome'      => 'required',
-                                    'email'     => 'required|email']);
+                                    'matricula'     => 'required']);
 
         $input      = $request->all();
-        $cliente    = Clientes::find($id);
+        $vendedor   = Vendedores::find($id);
 
-        $cliente->update($input);
+        $vendedor->update($input);
 
-        return redirect()->route('clientes.index')
-                         ->with('success', 'Cliente atualizado com sucesso!');
-
+        return redirect()->route('vendedores.index')
+                         ->with('success', 'Vendedor atualizado com sucesso!');
     }
 
     /**
@@ -115,11 +111,9 @@ class ClientesController extends Controller
     public function destroy($id)
     {
         //
+        Vendedores::find($id)->delete();
 
-        Clientes::find($id)->delete();
-
-        return redirect()->route('clientes.index')
-                         ->with('success', 'Cliente removido com sucesso!');
-
+        return redirect()->route('vendedores.index')
+                         ->with('success', 'Vendedor removido com sucesso!');
     }
 }
