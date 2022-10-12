@@ -1,0 +1,53 @@
+colocar as views de Users depois
+
+Views Users
+
+https://bitbucket.org/senac-tsi-php/senac-mvc-2201/src/0407a25590ac6747ea1c19a61c72b8386569b0c0/primeiro_site/resources/views/users/create.blade.php?at=aula%2F03-06-22
+
+
+
+19:44
+
+Agora do edit.blade.php
+
+
+
+19:44
+
+https://bitbucket.org/senac-tsi-php/senac-mvc-2201/src/0407a25590ac6747ea1c19a61c72b8386569b0c0/primeiro_site/resources/views/users/edit.blade.php?at=aula%2F03-06-22
+
+
+
+19:45
+
+Agora do index.blade.php
+
+
+
+19:45
+
+https://bitbucket.org/senac-tsi-php/senac-mvc-2201/src/0407a25590ac6747ea1c19a61c72b8386569b0c0/primeiro_site/resources/views/users/index.blade.php?at=aula%2F03-06-22
+
+
+
+19:46
+
+Agora o show.blade.php
+
+
+
+19:46
+
+https://bitbucket.org/senac-tsi-php/senac-mvc-2201/src/0407a25590ac6747ea1c19a61c72b8386569b0c0/primeiro_site/resources/views/users/show.blade.php?at=aula%2F03-06-22
+
+
+
+21:12
+
+.
+
+
+
+21:12
+
+.

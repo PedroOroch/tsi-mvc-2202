@@ -1,0 +1,17 @@
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+
+
+public function run()
+{
+    $user = User::create(['name' => 'Admin',
+                                      'email' => 'admin@sp.senac.br',
+                                      'password' => bcrypt('12345678')]);
+    $permissions = Permission::pluck('id', 'id')->all();
+
+    $role = Role::create(['name' => 'Adimnistrador']);
+
+    $role->syncPermissions($permissions);
+
+    $user->assignRole([$role->id]);
+}

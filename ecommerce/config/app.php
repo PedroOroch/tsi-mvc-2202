@@ -214,4 +214,7 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 
+    'providers' =>
+        Spatie\Permission\PermissionServiceProvider::class
+
 ];
