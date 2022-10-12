@@ -9,11 +9,11 @@
         </div>
         <div class="pull-right">
 
+        {{-- @can('vendedores-create') --}}
 
+            <a class="btn btn-success" href="{{ route('vendedores.create') }}"> + Novo vendedor</a>
 
-            <a class="btn btn-success" href="{{ route('vendedores.create') }}"> + Novo Vendedor</a>
-
-
+        {{-- @endcan --}}
 
         </div>
     </div>
@@ -47,13 +47,13 @@
     <td>
        <a class="btn btn-info" href="{{ route('vendedores.show',$vendedor->id) }}">Mostrar</a>
 
-
+       {{-- @can('vendedor-edit') --}}
 
         <a class="btn btn-primary" href="{{ route('vendedores.edit',$vendedor->id) }}">Editar</a>
 
+       {{-- @endcan --}}
 
-
-
+       {{-- @can('vendedor-delete') --}}
 
         {!! Form::open(['method' => 'DELETE','route' => ['vendedores.destroy', $vendedor->id],'style'=>'display:inline']) !!}
 
@@ -61,6 +61,7 @@
 
         {!! Form::close() !!}
 
+       {{-- @endcan --}}
 
     </td>
   </tr>

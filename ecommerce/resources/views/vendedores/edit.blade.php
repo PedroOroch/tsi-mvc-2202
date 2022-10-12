@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Editar Vendedor</h2>
+            <h2>Editar vendedor</h2>
         </div>
         <div class="pull-right">
             <a class="btn btn-primary" href="{{ route('vendedores.index') }}"> Voltar</a>
@@ -30,7 +30,7 @@
 @endif
 
 
-{!! Form::model($vendedor, ['method' => 'PATCH','route' => ['vendedores.update', $vendedor->id]]) !!}
+{!! Form::model($vend, ['method' => 'PATCH','route' => ['vendedores.update', $vend->id]]) !!}
 
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
@@ -43,7 +43,7 @@
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Matrícula:</strong>
-            {!! Form::text('matricula', null, array('placeholder' => 'Matricula','class' => 'form-control')) !!}
+            {!! Form::text('matricula', null, array('placeholder' => 'Matrícula','class' => 'form-control')) !!}
         </div>
     </div>
 

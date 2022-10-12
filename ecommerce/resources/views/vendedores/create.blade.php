@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Cadastrar Vendedor</h2>
+            <h2>Cadastrar vendedor</h2>
         </div>
 
         <div class="pull-right">
@@ -13,7 +13,7 @@
         </div>
     </div>
 </div>
-<br>
+</br>
 
 
 @if (count($errors) > 0)

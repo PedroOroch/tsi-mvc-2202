@@ -7,7 +7,6 @@ use \App\Models\Vendedores;
 
 class VendedoresController extends Controller
 {
-
     private $qtdPorPagina = 5;
 
     /**
@@ -17,12 +16,10 @@ class VendedoresController extends Controller
      */
     public function index(Request $request)
     {
-        //
-
         $vend = Vendedores::orderBy('id', 'ASC')->paginate($this->qtdPorPagina);
 
         return view('vendedores.index', compact('vend'))
-                ->with('i', ($request->input('page', 1) - 1) * $this->qtdPorPagina);
+                ->with('i', ($request->input('page', 1) - 1 ) * $this->qtdPorPagina);
     }
 
     /**
@@ -43,11 +40,11 @@ class VendedoresController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $this->validate($request, [ 'nome'          => 'required',
-                                    'matricula'     => 'required']);
-        $input      = $request->all();
-        $vendedor    = Vendedores::create($input);
+        $this->validate($request, [ 'nome' => 'required',
+                                    'matricula' => 'required']);
+        $input = $request->all();
+
+        $vendedor = Vendedores::create($input);
 
         return redirect()->route('vendedores.index')->with('success', 'Vendedor gravado com sucesso!');
     }
@@ -60,10 +57,9 @@ class VendedoresController extends Controller
      */
     public function show($id)
     {
-        //
-        $vendedor = Vendedores::find($id);
+        $vend = Vendedores::find($id);
 
-        return view('vendedores.show', compact('vendedor'));
+        return view('vendedores.show', compact('vend'));
     }
 
     /**
@@ -74,10 +70,9 @@ class VendedoresController extends Controller
      */
     public function edit($id)
     {
-        //
-        $vendedor = Vendedores::find($id);
+        $vend = Vendedores::find($id);
 
-        return view('vendedores.edit', compact('vendedor'));
+        return view('vendedores.edit', compact('vend'));
     }
 
     /**
@@ -89,17 +84,17 @@ class VendedoresController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        $this->validate($request, [ 'nome'      => 'required',
-                                    'matricula'     => 'required']);
+        $this->validate($request, [ 'nome' => 'required',
+                                    'matricula' => 'required']);
 
-        $input      = $request->all();
-        $vendedor   = Vendedores::find($id);
+        $input = $request->all();
 
-        $vendedor->update($input);
+        $vend = Vendedores::find($id);
+
+        $vend->update($input);
 
         return redirect()->route('vendedores.index')
-                         ->with('success', 'Vendedor atualizado com sucesso!');
+                            ->with('success', 'Vendedor atualizado com sucesso!');
     }
 
     /**
@@ -110,10 +105,9 @@ class VendedoresController extends Controller
      */
     public function destroy($id)
     {
-        //
         Vendedores::find($id)->delete();
 
         return redirect()->route('vendedores.index')
-                         ->with('success', 'Vendedor removido com sucesso!');
+                            ->with('success', 'Vendedor removido com sucesso!');
     }
 }

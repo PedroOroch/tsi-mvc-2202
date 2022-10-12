@@ -18,7 +18,7 @@
         <div class="form-group">
             <strong>Nome:</strong>
 
-            {{ $vendedor->nome }}
+            {{ $vend->nome }}
 
         </div>
     </div>
@@ -26,11 +26,10 @@
         <div class="form-group">
             <strong>Matrícula:</strong>
 
-            {{ $vendedor->matricula }}
+            {{ $vend->matricula }}
 
         </div>
     </div>
-
 </div>
 
 @endsection
