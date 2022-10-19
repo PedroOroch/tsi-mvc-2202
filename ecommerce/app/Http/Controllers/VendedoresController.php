@@ -7,7 +7,25 @@ use \App\Models\Vendedores;
 
 class VendedoresController extends Controller
 {
+
+
+
     private $qtdPorPagina = 5;
+
+    public function __construct()
+    {
+        //Documentação do Spatie
+        //https://docs.spatie.be/laravel-permission/v3/introduction/
+
+        $this->middleware(  'permission:vendedores-list|vendedores-create|vendedores-edit|vendedores-delete',
+                            ['only' => ['index', 'show']]);
+        $this->middleware(  'permission:vendedores-create',
+                            ['only' => ['create', 'store']]);
+        $this->middleware(  'permission:vendedores-edit',
+                            ['only' => ['edit', 'update']]);
+        $this->middleware(  'permission:vendedores-delete',
+                            ['only' => ['destroy']]);
+    }
 
     /**
      * Display a listing of the resource.

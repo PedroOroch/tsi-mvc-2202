@@ -6,12 +6,29 @@ use Illuminate\Http\Request;
 
 use \App\Models\Clientes;
 
+use Spatie\Permission\Models\Role;
+
 
 class ClientesController extends Controller
 {
     //use Illuminate\Http\Request;
 
     private $qtdPorPagina = 5;
+
+    public function __construct()
+    {
+        //Documentação do Spatie
+        //https://docs.spatie.be/laravel-permission/v3/introduction/
+
+        $this->middleware(  'permission:clientes-list|clientes-create|clientes-edit|clientes-delete',
+                            ['only' => ['index', 'show']]);
+        $this->middleware(  'permission:clientes-create',
+                            ['only' => ['create', 'store']]);
+        $this->middleware(  'permission:clientes-edit',
+                            ['only' => ['edit', 'update']]);
+        $this->middleware(  'permission:clientes-delete',
+                            ['only' => ['destroy']]);
+    }
 
     /**
      * Display a listing of the resource.

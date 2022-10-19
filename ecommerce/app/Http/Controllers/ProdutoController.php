@@ -10,6 +10,21 @@ class ProdutoController extends Controller
 
     private $qtdPorPagina = 5;
 
+    public function __construct()
+    {
+        //Documentação do Spatie
+        //https://docs.spatie.be/laravel-permission/v3/introduction/
+
+        $this->middleware(  'permission:produtos-list|produtos-create|produtos-edit|produtos-delete',
+                            ['only' => ['index', 'show']]);
+        $this->middleware(  'permission:produtos-create',
+                            ['only' => ['create', 'store']]);
+        $this->middleware(  'permission:produtos-edit',
+                            ['only' => ['edit', 'update']]);
+        $this->middleware(  'permission:produtos-delete',
+                            ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

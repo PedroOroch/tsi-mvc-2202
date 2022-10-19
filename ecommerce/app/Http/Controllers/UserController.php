@@ -11,6 +11,21 @@ use Hash;
 
 class UserController extends Controller
 {
+
+    public function __construct()
+    {
+        //Documentação do Spatie
+        //https://docs.spatie.be/laravel-permission/v3/introduction/
+
+        $this->middleware(  'permission:user-list|user-create|user-edit|user-delete',
+                            ['only' => ['index', 'show']]);
+        $this->middleware(  'permission:user-create',
+                            ['only' => ['create', 'store']]);
+        $this->middleware(  'permission:user-edit',
+                            ['only' => ['edit', 'update']]);
+        $this->middleware(  'permission:user-delete',
+                            ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *
