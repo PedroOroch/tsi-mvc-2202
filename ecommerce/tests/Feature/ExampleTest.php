@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Auth;
 
 // use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -18,4 +18,6 @@ class ExampleTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+
 }
